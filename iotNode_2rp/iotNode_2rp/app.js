@@ -1,13 +1,14 @@
 ﻿var express = require("express");
 var app = express();
-var SerialPort = require("serialport");
 
+var SerialPort = require("serialport");
 var port = 3000;
 
 var arduinoCOMPort = "COM5";
 
 var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
-    baudRate: 9600
+    baudRate: 9600,
+
 });
 
 
@@ -32,9 +33,12 @@ app.get('/:action', function (req, res) {
     if (action == "info") {
 
         arduinoSerialPort.write("i");
+        var buffer = ' ';
+        arduinoSerialPort.on('data', function (dataChunk) {
+            buffer += dataChunk;
+            var data = buffer.split(/\r?\n/);
 
-        arduinoSerialPort.on('data', function (data) {
-            console.log("현재 온도: " + parseFloat(data));
+            console.log("현재 온도: " + parseFloat(data[0]) + "C");
         });
 
         return res.send("Complete.");
