@@ -1,10 +1,12 @@
+
 void setup() {
 
   Serial.begin(9600); 
   
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(13, OUTPUT);
 
-  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(13, HIGH);
+  
 }
 
 void loop() {
@@ -32,7 +34,8 @@ void convertState(char chr) {
     break;
     
     case 'i'://PIN INFO
-    Serial.print(digitalRead(LED_BUILTIN));
+    int reading = analogRead(A5);
+    Serial.print((5.0*reading*100.0)/1024.0);
     delay(100);
     break;
   }

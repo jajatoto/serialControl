@@ -34,7 +34,7 @@ app.get('/:action', function (req, res) {
         arduinoSerialPort.write("i");
 
         arduinoSerialPort.on('data', function (data) {
-            console.log("현재 내장 LED에 해당하는 핀의 입력값: " + parseInt(data));
+            console.log("현재 온도: " + parseFloat(data));
         });
 
         return res.send("Complete.");
