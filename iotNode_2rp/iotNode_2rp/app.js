@@ -36,16 +36,6 @@ app.get('/:action', function (req, res) {
     }
     if (action == "info") {
 
-        client.query('SELECT * FROM temp', function (err, res) {
-            if (err) {
-                console.log("에러 발생: ", err);
-            }
-            else {
-                console.log("DB와 연결 성공!");
-            }
-            // client.end();
-        });
-
         arduinoSerialPort.write("i");
         var buffer = ' ';
         arduinoSerialPort.on('data', function (dataChunk) {
