@@ -34,7 +34,7 @@ void convertState(char chr) {
     
     case 'i'://PIN INFO
     int reading = analogRead(A5);
-    Serial.print((5.0*reading*100.0)/1024.0);
+    Serial.print((5.0*reading*5.0)/1024.0);
     break;
   }
 }
