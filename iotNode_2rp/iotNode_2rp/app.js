@@ -76,9 +76,9 @@ app.get('/get/:action', function (req, res) {
             }
 
             var avg = sum / data.length;
-            console.log(avg);
+            console.log("온도의 평균값: "+avg);
         });
-        return res.send("Complete");
+        return res.send("평균값 계산 완료");
     }
     if (action == 'bright') {
         return res.send("in Progress");
