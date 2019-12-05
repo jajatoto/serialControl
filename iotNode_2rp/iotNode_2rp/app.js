@@ -80,7 +80,7 @@ app.get('/get/:action', function (req, res) {
     var action = req.params.action || req.param('action');
     if (action == 'temp') {
 
-        client.query('SELECT * FROM temp', function (res, err) {
+        client.query('SELECT * FROM temp', function (response, err) {
             var sum = 0;
             var data = err.rows;    
             for (var i = 0; i < data.length; i++) {
