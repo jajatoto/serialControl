@@ -6,7 +6,7 @@
 ## Uri Routing
 
   /get/temp
-    : db에서 temp 쿼리 후 JSONArray 파싱. 이후 JSONObject 값 추출 후 평균값을 계산해 로그를 남김
+    : db에서 temp 쿼리 후 JSONArray 파싱. 이후 평균값을 저장해놓은 후 JSONArray를 response함
   
   /led
     : 현재 보드의 LED가 연결된 핀(현재는 13번) HIGH 상태가 되도록 보드에 요청함
