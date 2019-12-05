@@ -25,6 +25,7 @@ var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
 });
 
 
+app.engine('html', require('ejs').renderFile);
 
 
 app.use(express.static('public'));
