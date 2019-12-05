@@ -2,10 +2,13 @@
 var app = express();
 var SerialPort = require("serialport");
 
+
 var port = 3000;
 var arduinoCOMPort = "COM5";
 
+
 var { Client } = require("pg");
+
 
 var client = new Client({
     user: 'postgres',
@@ -15,14 +18,22 @@ var client = new Client({
     port: 5432,
 });
 
+
 client.connect();
 var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
     baudRate: 9600,
 });
 
+
+
+
+app.use(express.static('public'));
+
+
 app.get('/', function (req, res) {
     return res.send('작동중입니다.');
 })
+
 
 app.get('/:action', function (req, res) {
     var action = req.params.action || req.param('action');
