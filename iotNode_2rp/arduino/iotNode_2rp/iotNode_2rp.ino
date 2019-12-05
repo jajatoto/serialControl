@@ -1,3 +1,6 @@
+int tempPin = A5;
+int lightPin = 7;
+
 
 void setup() {
 
@@ -33,7 +36,7 @@ void convertState(char chr) {
     break;
     
     case 'i'://PIN INFO
-    int reading = analogRead(A5);
+    int reading = analogRead(tempPin);
     Serial.print((5.0*reading*100)/1024.0);
     break;
   }
