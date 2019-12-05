@@ -70,15 +70,15 @@ app.get('/get/:action', function (req, res) {
 
         client.query('SELECT * FROM temp', function (res, err) {
             var sum = 0;
-            var data = err.rows;
+            var data = err.rows;    
             for (var i = 0; i < data.length; i++) {
                 sum += data[i]['temperature'];
             }
 
             var avg = sum / data.length;
             console.log("온도의 평균값: "+avg);
+            return avg;
         });
-        return res.send("평균값 계산 완료");
     }
     if (action == 'bright') {
         return res.send("in Progress");
