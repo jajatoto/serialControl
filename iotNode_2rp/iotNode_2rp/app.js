@@ -32,7 +32,7 @@ app.use(express.static('public'));
 
 
 app.get('/', function (req, res) {
-    return res.send('작동중입니다.');
+    return res.render('index.html');
 })
 
 
