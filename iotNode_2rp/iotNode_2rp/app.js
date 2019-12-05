@@ -88,14 +88,15 @@ app.get('/get/:action', function (req, res) {
             }
 
             var avg = sum / data.length;
-            console.log("온도의 평균값: "+avg);
-            return avg;
+            res.json(data);
+            console.log("GET, Temp: "+avg);
         });
+
     }
     if (action == 'bright') {
         return res.send("in Progress");
     }
-
+    
 });
 
 app.listen(port, function () {
