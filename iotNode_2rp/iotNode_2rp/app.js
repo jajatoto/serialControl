@@ -28,7 +28,7 @@ var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
 app.engine('html', require('ejs').renderFile);
 
 
-app.use(express.static('public'));
+app.use('/scripts',express.static(__dirname+'/scripts'));
 
 
 app.get('/', function (req, res) {
