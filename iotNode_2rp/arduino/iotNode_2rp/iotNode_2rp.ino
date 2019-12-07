@@ -27,13 +27,6 @@ void loop() {
 void convertState(char chr) {
   
   switch(chr){
-    case 'o'://PIN HIGH
-    digitalWrite(LED_BUILTIN, HIGH);
-    break;
-    
-    case 'f'://PIN LOW
-    digitalWrite(LED_BUILTIN, LOW);
-    break;
     
     case 'i'://PIN INFO
     int reading = analogRead(tempPin);
