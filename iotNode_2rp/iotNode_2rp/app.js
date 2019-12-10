@@ -83,13 +83,15 @@ app.get('/get/:action', function (req, res) {
     client.query('SELECT * FROM temp', function (response, err) {
         var sum = 0;
         var data = err.rows;
-        for (var i = 0; i < data.length; i++) {
-            sum += data[i]['temperature'];
-        }
 
         if (action == 'temp') {
-            res.json(data);
             console.log("GET, TempArray");
+            return res.json(data);
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            //console.log("calTest");
+            sum += data[i]['temperature'];
         }
 
         var avg = sum / data.length;
