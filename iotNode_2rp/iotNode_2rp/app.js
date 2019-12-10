@@ -72,6 +72,9 @@ app.get('/:action', function (req, res) {
 
         return res.send("데이터 수집 완료");
     }
+    if (action == "del") {
+        client.query("TRUNCATE temp")
+    }
 
     return res.send("Action: " + action);
 
@@ -105,4 +108,3 @@ app.get('/get/:action', function (req, res) {
 app.listen(port, function () {
     console.log("http://0.0.0.0:" + port + " Server On.");
 });
-
