@@ -37,6 +37,11 @@ app.get('/', function (req, res) {
 })
 
 
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+})
+
 app.get('/:action', function (req, res) {
     var action = req.params.action || req.param('action');
     if (action == "led") {
