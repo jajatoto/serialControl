@@ -28,8 +28,8 @@ var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
 app.engine('html', require('ejs').renderFile);
 
 
-app.use('/scripts',express.static(__dirname+'/scripts'));
-app.use('/styles',express.static(__dirname+'/styles'));
+app.use('/scripts', express.static(__dirname + '/scripts'));
+app.use('/styles', express.static(__dirname + '/styles'));
 
 
 app.get('/', function (req, res) {
@@ -79,25 +79,25 @@ app.get('/:action', function (req, res) {
 
 app.get('/get/:action', function (req, res) {
     var action = req.params.action || req.param('action');
-    if (action == 'temp') {
 
-        client.query('SELECT * FROM temp', function (response, err) {
-            var sum = 0;
-            var data = err.rows;    
-            for (var i = 0; i < data.length; i++) {
-                sum += data[i]['temperature'];
-            }
+    client.query('SELECT * FROM temp', function (response, err) {
+        var sum = 0;
+        var data = err.rows;
+        for (var i = 0; i < data.length; i++) {
+            sum += data[i]['temperature'];
+        }
 
-            var avg = sum / data.length;
+        if (action == 'temp') {
             res.json(data);
-            console.log("GET, Temp: "+avg);
-        });
+            console.log("GET, TempArray");
+        }
 
-    }
-    if (action == 'bright') {
-        return res.send("in Progress");
-    }
-    
+        var avg = sum / data.length;
+        if (action == 'avg') {
+            res.json(avg);
+            console.log("GET, Temp: " + avg);
+        }
+    });
 });
 
 app.listen(port, function () {
