@@ -1,9 +1,12 @@
-# serialControl
+# serialControl-PWA
 
 >Node.JS 서버 환경에서 Arduino를 제어해보는 프로젝트
 
 
 ## Uri Routing
+
+  /get/avg
+    : 파싱한 JSON들의 평균값 계산 
 
   /get/temp
     : db에서 temp 쿼리 후 JSONArray 파싱. 이후 평균값을 저장해놓은 후 JSONArray를 response함
