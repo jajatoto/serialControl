@@ -1,4 +1,5 @@
 $(function () {
+
     $("#btnInfo").click(function () {
 
         $.get("http://127.0.0.1:3000/get/temp", function (json) {
@@ -6,4 +7,11 @@ $(function () {
         })
 
     });
+
+    $("#btnAvg").click(function () {
+        $.get("http://127.0.0.1:3000/get/avg", function (data) {
+            $("#pAvg").text(data+"℃");
+        });
+    });
+
 });
