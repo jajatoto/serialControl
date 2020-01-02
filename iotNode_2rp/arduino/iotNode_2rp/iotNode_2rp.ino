@@ -32,5 +32,9 @@ void convertState(char chr) {
     int reading = analogRead(tempPin);
     Serial.print((5.0*reading*100)/1024.0);
     break;
+    
+    case 't'://TEST 
+    Serial.print("test");
+    break;
   }
 }
