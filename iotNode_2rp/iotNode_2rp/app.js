@@ -20,12 +20,19 @@ var client = new Client({
 
 
 client.connect();
-var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
-    baudRate: 9600,
-});
+// var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
+//     baudRate: 9600,
+// });
 
 
 app.engine('html', require('ejs').renderFile);
+
+
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+  });
 
 
 app.use('/scripts', express.static(__dirname + '/scripts'));
